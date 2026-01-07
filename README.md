@@ -31,7 +31,7 @@ TMSU Explorer provides a modern, clean interface for managing file tags without 
 
 1.  Clone the repository:
     ```bash
-    git clone [https://github.com/YOUR_USERNAME/tmsu-explorer.git](https://github.com/YOUR_USERNAME/tmsu-explorer.git)
+    git clone https://github.com/Foadsf/tmsu-explorer.git
     cd tmsu-explorer
     ```
 
