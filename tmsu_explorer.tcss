@@ -1,0 +1,439 @@
+/* =============================================================================
+   TMSU Explorer - Textual CSS Stylesheet
+   
+   A clean, professional, Zotero-inspired design for the TMSU tag manager TUI.
+   Design philosophy: No bloat, welcoming, functional.
+   ============================================================================= */
+
+/* -----------------------------------------------------------------------------
+   Global Styles & Variables
+   ----------------------------------------------------------------------------- */
+
+$primary: #5c9fd4;
+$secondary: #7eb36a;
+$surface: #1e1e2e;
+$surface-light: #2a2a3e;
+$background: #11111b;
+$text: #cdd6f4;
+$text-muted: #6c7086;
+$border: #45475a;
+$error: #f38ba8;
+$warning: #fab387;
+$success: #a6e3a1;
+
+/* -----------------------------------------------------------------------------
+   App-Level Layout
+   ----------------------------------------------------------------------------- */
+
+Screen {
+    background: $background;
+    color: $text;
+}
+
+Header {
+    background: $surface;
+    color: $primary;
+    text-style: bold;
+    height: 1;
+    dock: top;
+}
+
+Footer {
+    background: $surface;
+    color: $text-muted;
+    height: 1;
+    dock: bottom;
+}
+
+/* Main three-pane container */
+#main-container {
+    height: 1fr;
+    width: 100%;
+}
+
+/* -----------------------------------------------------------------------------
+   Left Sidebar - Sources & Tags
+   ----------------------------------------------------------------------------- */
+
+#left-sidebar {
+    width: 28;
+    min-width: 24;
+    max-width: 40;
+    height: 100%;
+    border-right: solid $border;
+    background: $surface;
+}
+
+#source-tree {
+    height: 50%;
+    border-bottom: solid $border;
+    padding: 0 1;
+    scrollbar-size: 1 1;
+}
+
+#source-tree > .tree--guides {
+    color: $border;
+}
+
+#source-tree > .tree--cursor {
+    background: $primary 30%;
+    color: $text;
+}
+
+#source-tree:focus > .tree--cursor {
+    background: $primary;
+    color: $background;
+}
+
+#tags-label {
+    height: 1;
+    padding: 0 1;
+    background: $surface-light;
+    color: $secondary;
+    text-style: bold;
+    border-bottom: solid $border;
+}
+
+#tag-list {
+    height: 1fr;
+    padding: 0 1;
+    scrollbar-size: 1 1;
+}
+
+#tag-list > ListItem {
+    padding: 0;
+    height: 1;
+}
+
+#tag-list > ListItem:hover {
+    background: $surface-light;
+}
+
+#tag-list > ListItem.-selected {
+    background: $secondary 30%;
+}
+
+#tag-list:focus > ListItem.-selected {
+    background: $secondary;
+    color: $background;
+}
+
+/* -----------------------------------------------------------------------------
+   Middle Pane - File List
+   ----------------------------------------------------------------------------- */
+
+#middle-pane {
+    width: 1fr;
+    min-width: 30;
+    height: 100%;
+    background: $background;
+}
+
+#files-label {
+    height: 1;
+    padding: 0 1;
+    background: $surface;
+    color: $primary;
+    text-style: bold;
+    border-bottom: solid $border;
+}
+
+#file-table {
+    height: 1fr;
+    padding: 0;
+    scrollbar-size: 1 1;
+}
+
+#file-table > .datatable--header {
+    background: $surface-light;
+    color: $text;
+    text-style: bold;
+}
+
+#file-table > .datatable--cursor {
+    background: $primary 25%;
+    color: $text;
+}
+
+#file-table:focus > .datatable--cursor {
+    background: $primary;
+    color: $background;
+}
+
+#file-table > .datatable--even-row {
+    background: transparent;
+}
+
+#file-table > .datatable--odd-row {
+    background: $surface 20%;
+}
+
+/* -----------------------------------------------------------------------------
+   Right Pane - Inspector
+   ----------------------------------------------------------------------------- */
+
+#right-pane {
+    width: 32;
+    min-width: 28;
+    max-width: 45;
+    height: 100%;
+    border-left: solid $border;
+    background: $surface;
+}
+
+#inspector-label {
+    height: 1;
+    padding: 0 1;
+    background: $surface-light;
+    color: $primary;
+    text-style: bold;
+    border-bottom: solid $border;
+}
+
+#metadata-panel {
+    height: 50%;
+    border-bottom: solid $border;
+    overflow-y: auto;
+    scrollbar-size: 1 1;
+}
+
+#metadata-panel .section-label {
+    color: $secondary;
+    text-style: bold;
+    margin-bottom: 1;
+}
+
+#metadata-panel #metadata-scroll {
+    padding: 0;
+}
+
+#metadata-panel .metadata-row {
+    padding: 0;
+    height: auto;
+}
+
+#tag-editor {
+    height: 1fr;
+    padding: 1;
+    overflow-y: auto;
+}
+
+#tag-editor .section-label {
+    color: $secondary;
+    text-style: bold;
+    margin-bottom: 1;
+}
+
+#tag-editor #tag-container {
+    height: auto;
+    min-height: 1;
+    overflow: hidden auto;
+    padding: 0;
+}
+
+#tag-editor #tag-input {
+    margin-top: 1;
+    background: $background;
+    border: solid $border;
+}
+
+#tag-editor #tag-input:focus {
+    border: solid $primary;
+}
+
+/* Tag Chips */
+TagChip {
+    height: 1;
+    padding: 0 1;
+    margin: 0 1 1 0;
+    background: $primary 30%;
+    color: $text;
+}
+
+TagChip:hover {
+    background: $primary 50%;
+}
+
+/* -----------------------------------------------------------------------------
+   Status Bar & Log Panel
+   ----------------------------------------------------------------------------- */
+
+#status-bar {
+    height: 1;
+    background: $surface;
+    color: $text-muted;
+    padding: 0 1;
+    dock: bottom;
+}
+
+#log-panel {
+    height: 8;
+    min-height: 5;
+    max-height: 15;
+    background: $background;
+    border-top: solid $border;
+    padding: 0 1;
+    dock: bottom;
+    scrollbar-size: 1 1;
+}
+
+#log-panel.hidden {
+    display: none;
+}
+
+/* -----------------------------------------------------------------------------
+   Modal Dialogs
+   ----------------------------------------------------------------------------- */
+
+ToolPathDialog #dialog {
+    width: 60;
+    height: auto;
+    padding: 1 2;
+    background: $surface;
+    border: thick $warning;
+    border-title-color: $warning;
+}
+
+ToolPathDialog .dialog-title {
+    text-align: center;
+    text-style: bold;
+    margin-bottom: 1;
+    color: $warning;
+}
+
+ToolPathDialog .dialog-text {
+    margin-bottom: 1;
+    color: $text-muted;
+}
+
+ToolPathDialog Label {
+    margin-top: 1;
+    color: $text;
+}
+
+ToolPathDialog Input {
+    margin-bottom: 1;
+    background: $background;
+    border: solid $border;
+}
+
+ToolPathDialog Input:focus {
+    border: solid $primary;
+}
+
+ToolPathDialog #buttons {
+    margin-top: 1;
+    align: center middle;
+    height: auto;
+}
+
+ToolPathDialog Button {
+    margin: 0 1;
+}
+
+/* Help Screen */
+HelpScreen #help-container {
+    width: 65;
+    height: auto;
+    max-height: 80%;
+    padding: 1 2;
+    background: $surface;
+    border: thick $primary;
+}
+
+HelpScreen .help-title {
+    text-align: center;
+    text-style: bold;
+    margin-bottom: 1;
+    color: $primary;
+}
+
+HelpScreen .help-section {
+    margin-top: 1;
+    color: $secondary;
+    text-style: bold;
+}
+
+/* -----------------------------------------------------------------------------
+   General Button Styles
+   ----------------------------------------------------------------------------- */
+
+Button {
+    min-width: 12;
+    height: 1;
+    background: $surface-light;
+    color: $text;
+    border: none;
+}
+
+Button:hover {
+    background: $primary 40%;
+}
+
+Button:focus {
+    background: $primary;
+    color: $background;
+}
+
+Button.-primary {
+    background: $primary;
+    color: $background;
+}
+
+Button.-primary:hover {
+    background: $primary 80%;
+}
+
+/* -----------------------------------------------------------------------------
+   General Input Styles
+   ----------------------------------------------------------------------------- */
+
+Input {
+    background: $background;
+    color: $text;
+    border: solid $border;
+    padding: 0 1;
+    height: 1;
+}
+
+Input:focus {
+    border: solid $primary;
+}
+
+Input > .input--placeholder {
+    color: $text-muted;
+}
+
+/* -----------------------------------------------------------------------------
+   Scrollbar Styles
+   ----------------------------------------------------------------------------- */
+
+* {
+    scrollbar-background: $surface;
+    scrollbar-color: $border;
+    scrollbar-color-hover: $primary;
+    scrollbar-color-active: $primary;
+}
+
+/* -----------------------------------------------------------------------------
+   Focus Indicators
+   ----------------------------------------------------------------------------- */
+
+*:focus {
+    /* Subtle focus indication through border/background changes defined per widget */
+}
+
+/* Tree focus styling */
+Tree:focus {
+    border: none;
+}
+
+/* ListView focus styling */  
+ListView:focus {
+    border: none;
+}
+
+/* DataTable focus styling */
+DataTable:focus {
+    border: none;
+}
